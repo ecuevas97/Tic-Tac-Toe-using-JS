@@ -1,3 +1,15 @@
+/* Light pink background (custom class, not in Bootstrap) */
 .bg-light-pink {
-  background-color: rgb(255, 221, 226);
+  background-color: #ffdee9; /* Soft pink tone */
+}
+
+/* Style for each tic-tac-toe box */
+#grid{
+    max-width: 300px;
+}
+.box {
+  background-color: lightblue;
+  border: 2px solid deeppink;
+  min-height: 100px;         /* Optional: ensures square-like appearance */
+  cursor: pointer;
 }
