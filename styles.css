@@ -13,3 +13,6 @@
   min-height: 100px;         /* Optional: ensures square-like appearance */
   cursor: pointer;
 }
+alert--container{
+  min-height: 80px;
+}
