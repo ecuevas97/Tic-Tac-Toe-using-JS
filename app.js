@@ -44,6 +44,8 @@
         currentPlayer = player1;
         console.log(currentPlayer);
 
+        $('#p1').addClass("bg-light border border-info");
+
         // show the start alert
         $('#alertStart').show();
 
@@ -60,9 +62,13 @@
          if(currentPlayer === player1){
             currentPlayer = player2;
             console.log(turn++);
+            $('#p2').addClass("bg-light border border-info");
+            $('#p1').removeClass("bg-light border border-info");
          } else{
             currentPlayer = player1;
             console.log(turn++);
+            $('#p1').addClass("bg-light border border-info");
+            $('#p2').removeClass("bg-light border border-info");
          }
          
 
