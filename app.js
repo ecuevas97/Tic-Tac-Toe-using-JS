@@ -40,6 +40,31 @@ $(function () {
     [box0, box3, box6], [box1, box4, box7], [box2, box5, box8],
     [box0, box4, box8], [box2, box4, box6]
   ];
+ 
+  // Check if the current board has a winning combination
+  const checkWinner = () => {
+    for (let combo of winningOutcomes) {
+      const [a, b, c] = combo;
+
+      // If all three boxes have the same non-empty value, declare winner
+      if (a.text() !== '' && a.text() === b.text() && b.text() === c.text()) {
+        winner = true;
+
+        // Display the winner alert
+        $('#alertWinner').text(`Player ${a.text()} Wins!`).show();
+
+        // Remove player highlights
+        $('#p1, #p2').removeClass("bg-light border border-info");
+        return;
+      }
+    }
+
+    // If all boxes are filled and no winner, declare draw
+    if (turn === 9 && !winner) {
+      $('#alertDraw').show();
+      $('#p1, #p2').removeClass("bg-light border border-info");
+    }
+  };
 
   // Keep track of the current player
   let currentPlayer = '';
@@ -87,30 +112,7 @@ $(function () {
     });
   };
 
-  // Check if the current board has a winning combination
-  const checkWinner = () => {
-    for (let combo of winningOutcomes) {
-      const [a, b, c] = combo;
-
-      // If all three boxes have the same non-empty value, declare winner
-      if (a.text() !== '' && a.text() === b.text() && b.text() === c.text()) {
-        winner = true;
-
-        // Display the winner alert
-        $('#alertWinner').text(`Player ${a.text()} Wins!`).show();
-
-        // Remove player highlights
-        $('#p1, #p2').removeClass("bg-light border border-info");
-        return;
-      }
-    }
-
-    // If all boxes are filled and no winner, declare draw
-    if (turn === 9 && !winner) {
-      $('#alertDraw').show();
-      $('#p1, #p2').removeClass("bg-light border border-info");
-    }
-  };
+ 
 
   // Bind start game function to the Start button
   $('#startBtn').on('click', startGame);
